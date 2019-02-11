@@ -5,22 +5,22 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : analitza
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/analitza-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/analitza-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/analitza-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/analitza-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/analitza-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/analitza-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 LGPL-2.0
-Requires: analitza-lib
-Requires: analitza-license
-Requires: analitza-data
+Requires: analitza-data = %{version}-%{release}
+Requires: analitza-lib = %{version}-%{release}
+Requires: analitza-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : eigen-dev
 BuildRequires : glew-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 No detailed description available
@@ -36,9 +36,9 @@ data components for the analitza package.
 %package dev
 Summary: dev components for the analitza package.
 Group: Development
-Requires: analitza-lib
-Requires: analitza-data
-Provides: analitza-devel
+Requires: analitza-lib = %{version}-%{release}
+Requires: analitza-data = %{version}-%{release}
+Provides: analitza-devel = %{version}-%{release}
 
 %description dev
 dev components for the analitza package.
@@ -47,8 +47,8 @@ dev components for the analitza package.
 %package lib
 Summary: lib components for the analitza package.
 Group: Libraries
-Requires: analitza-data
-Requires: analitza-license
+Requires: analitza-data = %{version}-%{release}
+Requires: analitza-license = %{version}-%{release}
 
 %description lib
 lib components for the analitza package.
@@ -63,27 +63,27 @@ license components for the analitza package.
 
 
 %prep
-%setup -q -n analitza-18.08.0
+%setup -q -n analitza-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535164183
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549858647
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535164183
+export SOURCE_DATE_EPOCH=1549858647
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/analitza
-cp COPYING %{buildroot}/usr/share/doc/analitza/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/analitza/COPYING.DOC
-cp COPYING.LIB %{buildroot}/usr/share/doc/analitza/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/analitza
+cp COPYING %{buildroot}/usr/share/package-licenses/analitza/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/analitza/COPYING.DOC
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/analitza/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -98,7 +98,6 @@ popd
 /usr/share/libanalitza/plots/conics.plots
 /usr/share/libanalitza/plots/polar.plots
 /usr/share/locale/ar/LC_MESSAGES/analitza_qt.qm
-/usr/share/locale/ast/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/bs/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/ca/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/ca@valencia/LC_MESSAGES/analitza_qt.qm
@@ -207,7 +206,7 @@ popd
 /usr/lib64/qt5/qml/org/kde/analitza/qmldir
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/analitza/COPYING
-/usr/share/doc/analitza/COPYING.DOC
-/usr/share/doc/analitza/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/analitza/COPYING
+/usr/share/package-licenses/analitza/COPYING.DOC
+/usr/share/package-licenses/analitza/COPYING.LIB
