@@ -6,11 +6,11 @@
 #
 Name     : analitza
 Version  : 19.04.0
-Release  : 7
+Release  : 8
 URL      : https://download.kde.org/stable/applications/19.04.0/src/analitza-19.04.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.04.0/src/analitza-19.04.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/19.04.0/src/analitza-19.04.0.tar.xz.sig
-Summary  : No detailed summary available
+Summary  : A library to add mathematical features to your program
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 LGPL-2.0
 Requires: analitza-data = %{version}-%{release}
@@ -71,16 +71,22 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1556944686
+export SOURCE_DATE_EPOCH=1556994186
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1556944686
+export SOURCE_DATE_EPOCH=1556994186
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/analitza
 cp COPYING %{buildroot}/usr/share/package-licenses/analitza/COPYING
