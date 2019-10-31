@@ -6,7 +6,7 @@
 #
 Name     : analitza
 Version  : 19.08.2
-Release  : 16
+Release  : 17
 URL      : https://download.kde.org/stable/applications/19.08.2/src/analitza-19.08.2.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.08.2/src/analitza-19.08.2.tar.xz
 Source1 : https://download.kde.org/stable/applications/19.08.2/src/analitza-19.08.2.tar.xz.sig
