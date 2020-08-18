@@ -321,6 +321,7 @@ libAnalitza.so.8:_ZNK8Analitza2Cn12complexValueEv
 libAnalitza.so.8:_ZNK8Analitza2Cn4copyEv
 libAnalitza.so.8:_ZNK8Analitza2Cn6acceptEPNS_25AbstractExpressionVisitorE
 libAnalitza.so.8:_ZNK8Analitza2Cn7matchesEPKNS_6ObjectEP4QMapI7QStringS3_E
+libAnalitza.so.8:_ZNK8Analitza2CneqERKS0_
 libAnalitza.so.8:_ZNK8Analitza4List4copyEv
 libAnalitza.so.8:_ZNK8Analitza4List6acceptEPNS_25AbstractExpressionVisitorE
 libAnalitza.so.8:_ZNK8Analitza4List6isZeroEv
@@ -374,6 +375,7 @@ libAnalitza.so.8:_ZNK8Analitza9ContainereqERKS0_
 libAnalitza.so.8:_ZNK8Analitza9MatrixRow4copyEv
 libAnalitza.so.8:_ZNK8Analitza9MatrixRow6acceptEPNS_25AbstractExpressionVisitorE
 libAnalitza.so.8:_ZNK8Analitza9Variables15valueExpressionERK7QString
+libAnalitza.so.8:_ZNK8Analitza9Variables8toStringEv
 libAnalitzaGui.so.8:_ZN14OperatorsModel11descriptionERKN8Analitza8OperatorE
 libAnalitzaGui.so.8:_ZN14OperatorsModel11qt_metacallEN11QMetaObject4CallEiPPv
 libAnalitzaGui.so.8:_ZN14OperatorsModel11qt_metacastEPKc
