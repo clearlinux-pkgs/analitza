@@ -6,7 +6,7 @@
 #
 Name     : analitza
 Version  : 20.08.2
-Release  : 33
+Release  : 34
 URL      : https://download.kde.org/stable/release-service/20.08.2/src/analitza-20.08.2.tar.xz
 Source0  : https://download.kde.org/stable/release-service/20.08.2/src/analitza-20.08.2.tar.xz
 Source1  : https://download.kde.org/stable/release-service/20.08.2/src/analitza-20.08.2.tar.xz.sig
@@ -74,7 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602625036
+export SOURCE_DATE_EPOCH=1602686453
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -90,7 +90,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1602625036
+export SOURCE_DATE_EPOCH=1602686453
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/analitza
 cp %{_builddir}/analitza-20.08.2/COPYING %{buildroot}/usr/share/package-licenses/analitza/4cc77b90af91e615a64ae04893fdffa7939db84c
