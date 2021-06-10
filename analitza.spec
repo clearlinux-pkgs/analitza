@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : analitza
-Version  : 21.04.0
-Release  : 39
-URL      : https://download.kde.org/stable/release-service/21.04.0/src/analitza-21.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.0/src/analitza-21.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.0/src/analitza-21.04.0.tar.xz.sig
+Version  : 21.04.2
+Release  : 40
+URL      : https://download.kde.org/stable/release-service/21.04.2/src/analitza-21.04.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.04.2/src/analitza-21.04.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.04.2/src/analitza-21.04.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 LGPL-2.0
@@ -66,15 +66,15 @@ license components for the analitza package.
 
 
 %prep
-%setup -q -n analitza-21.04.0
-cd %{_builddir}/analitza-21.04.0
+%setup -q -n analitza-21.04.2
+cd %{_builddir}/analitza-21.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1619199787
+export SOURCE_DATE_EPOCH=1623359205
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -90,12 +90,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1619199787
+export SOURCE_DATE_EPOCH=1623359205
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/analitza
-cp %{_builddir}/analitza-21.04.0/COPYING %{buildroot}/usr/share/package-licenses/analitza/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/analitza-21.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/analitza/1bd373e4851a93027ba70064bd7dbdc6827147e1
-cp %{_builddir}/analitza-21.04.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/analitza/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/analitza-21.04.2/COPYING %{buildroot}/usr/share/package-licenses/analitza/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/analitza-21.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/analitza/1bd373e4851a93027ba70064bd7dbdc6827147e1
+cp %{_builddir}/analitza-21.04.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/analitza/ba8966e2473a9969bdcab3dc82274c817cfd98a1
 pushd clr-build
 %make_install
 popd
@@ -130,6 +130,7 @@ popd
 /usr/share/locale/it/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/ja/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/kk/LC_MESSAGES/analitza_qt.qm
+/usr/share/locale/ko/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/lt/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/lv/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/ml/LC_MESSAGES/analitza_qt.qm
@@ -142,6 +143,7 @@ popd
 /usr/share/locale/pt/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/pt_BR/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/ru/LC_MESSAGES/analitza_qt.qm
+/usr/share/locale/se/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/sk/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/sl/LC_MESSAGES/analitza_qt.qm
 /usr/share/locale/sv/LC_MESSAGES/analitza_qt.qm
