@@ -6,7 +6,7 @@
 #
 Name     : analitza
 Version  : 21.04.2
-Release  : 40
+Release  : 41
 URL      : https://download.kde.org/stable/release-service/21.04.2/src/analitza-21.04.2.tar.xz
 Source0  : https://download.kde.org/stable/release-service/21.04.2/src/analitza-21.04.2.tar.xz
 Source1  : https://download.kde.org/stable/release-service/21.04.2/src/analitza-21.04.2.tar.xz.sig
