@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : analitza
-Version  : 23.04.0
-Release  : 63
-URL      : https://download.kde.org/stable/release-service/23.04.0/src/analitza-23.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.0/src/analitza-23.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.0/src/analitza-23.04.0.tar.xz.sig
+Version  : 23.04.1
+Release  : 64
+URL      : https://download.kde.org/stable/release-service/23.04.1/src/analitza-23.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.04.1/src/analitza-23.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.04.1/src/analitza-23.04.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 LGPL-2.0
@@ -70,39 +70,60 @@ license components for the analitza package.
 
 
 %prep
-%setup -q -n analitza-23.04.0
-cd %{_builddir}/analitza-23.04.0
+%setup -q -n analitza-23.04.1
+cd %{_builddir}/analitza-23.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682022407
+export SOURCE_DATE_EPOCH=1684783755
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+%cmake ..
+make  %{?_smp_mflags}
+popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682022407
+export SOURCE_DATE_EPOCH=1684783755
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/analitza
 cp %{_builddir}/analitza-%{version}/COPYING %{buildroot}/usr/share/package-licenses/analitza/4cc77b90af91e615a64ae04893fdffa7939db84c || :
 cp %{_builddir}/analitza-%{version}/COPYING.DOC %{buildroot}/usr/share/package-licenses/analitza/1bd373e4851a93027ba70064bd7dbdc6827147e1 || :
 cp %{_builddir}/analitza-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/analitza/ba8966e2473a9969bdcab3dc82274c817cfd98a1 || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -160,6 +181,10 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libAnalitza.so
+/V3/usr/lib64/libAnalitzaGui.so
+/V3/usr/lib64/libAnalitzaPlot.so
+/V3/usr/lib64/libAnalitzaWidgets.so
 /usr/include/Analitza5/analitza/abstractexpressionvisitor.h
 /usr/include/Analitza5/analitza/abstractlexer.h
 /usr/include/Analitza5/analitza/analitzaexport.h
@@ -214,6 +239,15 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/libAnalitza.so.8
+/V3/usr/lib64/libAnalitza.so.8.0.0
+/V3/usr/lib64/libAnalitzaGui.so.8
+/V3/usr/lib64/libAnalitzaGui.so.8.0.0
+/V3/usr/lib64/libAnalitzaPlot.so.8
+/V3/usr/lib64/libAnalitzaPlot.so.8.0.0
+/V3/usr/lib64/libAnalitzaWidgets.so.8
+/V3/usr/lib64/libAnalitzaWidgets.so.8.0.0
+/V3/usr/lib64/qt5/qml/org/kde/analitza/libanalitzadeclarativeplugin.so
 /usr/lib64/libAnalitza.so.8
 /usr/lib64/libAnalitza.so.8.0.0
 /usr/lib64/libAnalitzaGui.so.8
