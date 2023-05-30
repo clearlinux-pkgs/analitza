@@ -7,7 +7,7 @@
 #
 Name     : analitza
 Version  : 23.04.1
-Release  : 64
+Release  : 65
 URL      : https://download.kde.org/stable/release-service/23.04.1/src/analitza-23.04.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.1/src/analitza-23.04.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.1/src/analitza-23.04.1.tar.xz.sig
@@ -78,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684783755
+export SOURCE_DATE_EPOCH=1685478101
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -111,7 +111,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684783755
+export SOURCE_DATE_EPOCH=1685478101
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/analitza
 cp %{_builddir}/analitza-%{version}/COPYING %{buildroot}/usr/share/package-licenses/analitza/4cc77b90af91e615a64ae04893fdffa7939db84c || :
@@ -181,10 +181,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libAnalitza.so
-/V3/usr/lib64/libAnalitzaGui.so
-/V3/usr/lib64/libAnalitzaPlot.so
-/V3/usr/lib64/libAnalitzaWidgets.so
 /usr/include/Analitza5/analitza/abstractexpressionvisitor.h
 /usr/include/Analitza5/analitza/abstractlexer.h
 /usr/include/Analitza5/analitza/analitzaexport.h
@@ -239,13 +235,9 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libAnalitza.so.8
 /V3/usr/lib64/libAnalitza.so.8.0.0
-/V3/usr/lib64/libAnalitzaGui.so.8
 /V3/usr/lib64/libAnalitzaGui.so.8.0.0
-/V3/usr/lib64/libAnalitzaPlot.so.8
 /V3/usr/lib64/libAnalitzaPlot.so.8.0.0
-/V3/usr/lib64/libAnalitzaWidgets.so.8
 /V3/usr/lib64/libAnalitzaWidgets.so.8.0.0
 /V3/usr/lib64/qt5/qml/org/kde/analitza/libanalitzadeclarativeplugin.so
 /usr/lib64/libAnalitza.so.8
